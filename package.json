@@ -1,0 +1,26 @@
+{
+  "name": "InfoBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cytrus-re/wikipediajs": "^1.4.6",
+    "buzzfeed-headlines": "^2.0.0",
+    "facts-quiz": "^1.0.5",
+    "fis-lolcat": "^1.0.1",
+    "lolspeak": "^1.4.0",
+    "memejs": "^1.2.3",
+    "newsapi": "^2.4.1",
+    "rss-parser": "^3.9.0",
+    "sleep": "^6.3.0",
+    "socket.io-client": "^2.3.1",
+    "superagent": "^6.1.0",
+    "trollbox-headers": "0.0.4"
+  }
+}
