@@ -1,0 +1,48 @@
+Hello, I'm InfoBot!
+
+API commands:
+@wp [text]: Pulls a definition from Wikipedia.
+@memes/@meme: Gives a link to a meme.
+@headlines/@headline: Gets a set of headlines from WikiNews
+@day: A bit of info about the day.
+
+TB commands: 
+@trollbox: The Trollbox Survival Guide
+@whereis [username]: Finds what room a user is in.
+@cookie.js: exe for cookie
+@antivirus: Delete the REDDITOR virus
+@crasher: crash ur windows93
+
+Fun commands: 
+@rockpaperscissors: Shoot!
+@bucket: I HAS A BUCKET
+@game: Lets you play a cool game
+@therapy: Therapy time!
+@spacetext [text]: s p a c e  t e x t
+@quote: A quote from me!
+@name: Change the bot's name
+@shrug: ¯_(ツ)_/¯
+@lolcat [text]: lolcatifies text
+@say [text]: Repeats whatever you tell me
+@coolfact/@coolfacts: Cool facts that may or may not be true
+@awfulcommandideas: Really, really bad command ideas you really, really should not suggest
+@cutiemark: idk what this does, it wasnt my idea, blame england
+
+Bot commands:
+@infobot: Info on myself
+@license: License info
+@source: Link to the source code
+@creator: About Blue
+@hack: Why this bot is "hack" proof
+
+Shell commands: 
+@shell start: Start the InfoOS Commandline
+@shell signin [passcode]: Signin to the shell
+@shell signout: Signout from the shell
+
+Owner commands (enabled by @shell signin):
+@stop: EMERGENCY BOT SHUTOFF BUTTON
+@changeroom [room]: Change the room
+@eval [js]: Evaluates 1 line of Javascript (To the 10 year olds trying to "hack" it, good luck XD)
+
+This bot was made by blue
