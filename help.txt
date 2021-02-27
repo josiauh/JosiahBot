@@ -1,4 +1,4 @@
-Hello, I'm InfoBot!
+Hello, I'm JosiahBot!
 
 API commands:
 J!wikipedia [text]: Pulls a definition from Wikipedia.
