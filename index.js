@@ -1,5 +1,5 @@
 
-//"birthday" is on 9/14/2020
+//"birthday" is on 2/26
 var SHELL_STATE = 0
 var user_home = ""
 var rps_home = ""
