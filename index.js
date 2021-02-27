@@ -57,7 +57,7 @@ console.log("Functions defined")
 const socket = io('http://www.windows93.net:8081', tbheaders);
 console.log("Started socket.io client, waiting for connection...")
 socket.on('_connected', function(data) { 
-  socket.emit('user joined', 'InfoBot [@h] 🎄', "#459cff", "", "", "");
+  socket.emit('user joined', 'JosiahBot [J!]', "#459cff", "", "", "");
   console.log("connected");
   socket.send("InfoBot " + VERSION + " 🄯 copyleft blue 2020\nOK")
 })
@@ -69,11 +69,11 @@ socket.on('update users', function(data) {
   }
 })
 socket.on('user joined', function(data) {
-  if (data.color == "blue; screw yall im awesome") {
-    socket.send("Welcome back, creator");
+  if (data.color == "cyan; Josiah") {
+    socket.send("Josiah (my creator) Is Here!");
   }
   if (data.home == "MTg1NTM") {
-    socket.send("Welcome, Janken the Almighty")
+    socket.send("Jaken?")
   }
 });
 socket.on('message', function(data) {
@@ -84,12 +84,12 @@ socket.on('message', function(data) {
       nick = he.decode(data.nick)
     }
     else {
-      nick = "💩"
+      nick = "What"
     }
     ///msg handler code
-    if (msg_decoded == "@help" || msg_decoded == '@h') {
-      console.log("@help");
-      socket.send('Hello, I\'m InfoBot!\n\nAPI commands:\n@wp [text]: Pulls a definition from Wikipedia.\n@memes/@meme: Gives a link to a meme.\n@headlines/@headline: Gets a set of headlines from WikiNews\n@day: A bit of info about the day.\n\nTB commands: \n@trollbox: The Trollbox Survival Guide\n@whereis [username]: Finds what room a user is in.\n@cookie.js: exe for cookie\n@antivirus: Delete the REDDITOR virus\n@crasher: crash ur windows93\n\nFun commands: \n@rockpaperscissors: Shoot!\n@bucket: I HAS A BUCKET\n@game: Lets you play a cool game\n@therapy: Therapy time!\n@spacetext [text]: s p a c e  t e x t\n@quote: A quote from me!\n@name: Change the bot\'s name\n@shrug: ¯\_(ツ)_/¯\n@lolcat [text]: lolcatifies text\n@say [text]: Repeats whatever you tell me\n@coolfact/@coolfacts: Cool facts that may or may not be true\n@awfulcommandideas: Really, really bad command ideas you really, really should not suggest\n@cutiemark: idk what this does, it wasnt my idea, blame england\n\nBot commands:\n@infobot: Info on myself\n@license: License info\n@source: Link to the source code\n@creator: About Blue\n@hack: Why this bot is "hack" proof\n\nShell commands: \n@shell start: Start the InfoOS Commandline\n@shell signin [passcode]: Signin to the shell\n@shell signout: Signout from the shell\n\nOwner commands (enabled by @shell signin):\n@stop: EMERGENCY BOT SHUTOFF BUTTON\n@changeroom [room]: Change the room\n@eval [js]: Evaluates 1 line of Javascript (To the 10 year olds trying to "hack" it, good luck XD)\n\nThis bot was made by blue');
+    if (msg_decoded == "J!introduction" || msg_decoded == 'J!h' || msg_decoded == 'J!help') {
+      console.log("J!help");
+      socket.send('Hi! Im JosiahBot! /n J!introduction,h,help - Bring Yaself here - this bot was forked from InfoBot and Changed.');
     }
     /* else if (msg_decoded == "@failsafe") {
       socket.send(data.date + " failsafe protecc")
@@ -103,8 +103,8 @@ socket.on('message', function(data) {
         socket.send("nice try idiot")
       }
     } */
-    else if (msg_decoded.includes("@@")) {
-      socket.send("w h a t");
+    else if (msg_decoded.includes("@JosiahBot")) {
+      socket.send("Wassup?");
     }
     /*else if (msg_decoded.includes("@isbot")) {
       console.log("@isbot")
@@ -133,7 +133,7 @@ socket.on('message', function(data) {
       }
     }
     */
-    else if (msg_decoded.includes("@whereis")) {
+    else if (msg_decoded.includes("J!currentuserroom")) {
       console.log("@whereis")
       var whereis_text = msg_decoded.split(separator = " ");
       delete whereis_text[0]
@@ -146,35 +146,36 @@ socket.on('message', function(data) {
         }
         else {
           if (whereis_name.length == 0) {
-            socket.send("insert a parameter duck")
+            socket.send("Insert the user, lol.")
           }
           else {
-            socket.send("Could not find user: " + whereis_name)
+            socket.send("I can't locate a user in trollbox named " + whereis_name + ".")
           }
         }
       }
       else {
-        socket.send("lolnope stupid")
+        socket.send("No Stupid")
       }
     }
-    else if (msg_decoded == "@license") {
-      socket.send("This work is licensed under The Gnu General Pub")
+    else if (msg_decoded == "J!license") {
+      socket.send("I DON'T KNOW :D")
     }
-    else if (msg_decoded.toLowerCase() == "im blue" || msg_decoded.toLowerCase() == "i'm blue") {
-      socket.send("daba dee daba die");
+    else if (msg_decoded.toLowerCase() == "im blue" || msg_decoded.toLowerCase() == "J!gettinfreaky") {
+      socket.send("on a friday night, yeah");
     }
-    else if (msg_decoded == "@crasher") {
+    else if (msg_decoded == "J!crashmywindows") {
       socket.send("/exe js while (true) {$alert(\"this will crash ur windows93\");}")
     }
-    else if (msg_decoded == "@cookie.js") {
+    else if (msg_decoded == "J!give cookie") {
+      socket.send("Here's your cookie :D")
       socket.send("/exe js data:text/javascript;base64,ZnVuY3Rpb24gY29va2llKGRhdGEpIHsgaWYgKGRhdGEpIHskYWxlcnQuaW5mbygiKmdpdmVzIGNvb2tpZSogaGVyZSB5YSBnbyEgOikiKTt9IGVsc2UgeyRhbGVydCgiQXd3d3d3Li4uIDstOyIpO319OyAkY29uZmlybSgiV2FudCBhIGNvb2tpZT8/PyIsIGNhbGxiYWNrPWNvb2tpZSk=");
     }
-    else if (msg_decoded == "@rockpaperscissors") {
+    else if (msg_decoded == "J!rps") {
       rps_home = data.home
       socket.send("Make your move! (say 'rock', 'paper', or 'scissors')")
     }
-    else if (msg_decoded == "Welcome cunt") {
-      socket.send("hey hey hey cunt's back");
+    else if (msg_decoded == "You Cunt") {
+      socket.send(":(");
     }
     else if (msg_decoded.includes('rock') || msg_decoded.includes('paper') || msg_decoded.includes('scissors')) {
       if (data.home == rps_home) {
@@ -189,7 +190,7 @@ socket.on('message', function(data) {
             rps_choice = "scissors"
             break;
           default:
-            socket.send("Invalid move. Exiting game...")
+            socket.send("Not a move! Now exiting...")
             rps_home = ""
             var _invalidmove = true
         }
@@ -238,37 +239,37 @@ socket.on('message', function(data) {
               }
               break;
             default:
-              socket.send("An error has occured")
+              socket.send("The bot system went wrong...")
           }
           sleep.sleep(2)
           //console.log(game_ending)
           if (game_ending == "user_won") {
-            socket.send("You won! Great job!")
+            socket.send("How could you even-")
           }
           else if (game_ending == "bot_won") {
-            socket.send("You lost. Better luck next time!")
+            socket.send("A lil' win for me! quack~")
           }
           else {
-            socket.send("That's a tie.")
+            socket.send("Who won?!? nObOdY")
           }
           rps_home = ""
           rps_choice = ""
         }
       }
     }
-    else if (msg_decoded == "@stop") {
+    else if (msg_decoded == "J!shutdown") {
       console.log("@stop")
-      if (data.home == user_home) {
-        socket.send("STOPPING");
+      if (nick = "Josiah") {
+        socket.send("I TRUST YOU JOSIAH, GOODBYE TROLLBOX");
         process.exit(0);
       }
       else {
-        socket.send("PERM_ERR: " + nick + " DOES NOT HAVE REQUIRED PERMISSON LEVEL");
+        socket.send("Uh, You are not Josiah.");
       }
     }
     else if (msg_decoded.includes("@name")) {
       console.log("name")
-      if ((moment.now() - name_lastUsed) < 10000) { 
+      if ((moment.now() - name_lastUsed) < 10) { 
         socket.send("This command is on cooldown.")
       }
       else {
@@ -283,20 +284,21 @@ socket.on('message', function(data) {
           var name_text = msg_decoded.split(separator = " ");
           delete name_text[0]
           var new_name = name_text.join(" ")
-          socket.emit('user joined', (new_name + ' [@h] ☆'), "#459cff", "", "", "");
-        }
+          socket.emit('user joined', (new_name + ' [J!h] '), "#459cff", "", "", "");
+          wait(10)
+          socket.emit('user joined', ('JosiahBot [J!h]'), "#459cff", "", "", "")
       }
     }
     else if (msg_decoded.includes("@changeroom")) {
       console.log('@changeroom')
-      if (data.home == user_home) {
+      if (nick = 'Josiah') {
         var room_change_text = msg_decoded.split(separator = " ");
         delete room_change_text[0];
         room_id = room_change_text.join(" ")
         socket.send("/r" + room_id)
       }
       else {
-        socket.send("PERM_ERR: " + nick + " DOES NOT HAVE REQUIRED PERMISSON LEVEL");
+        socket.send("I am not coming to that room, " + nick + ". That's because you are not Josiah.");
       }
     }
     /*
@@ -312,50 +314,50 @@ socket.on('message', function(data) {
         socket.send("You're not too admin")
       }
     }*/
-    else if (msg_decoded.toLowerCase() == "thanks InfoBot") {
-      console.log("thanks")
-      socket.send("No problem!");
+    else if (msg_decoded.toLowerCase() == "thanks JosiahBot") {
+      console.log("OMG")
+      socket.send("Np!");
     }
-    else if (msg_decoded.includes("sus")) {
-      console.log("sus");
-      socket.send(nick + " sus")
+    else if (msg_decoded == ("JosiahBot sus")) {
+      console.log(nick + "is sus");
+      socket.send("No I'm not! " + nick + " sus")
     }
-    else if (msg_decoded == "@quote") {
+    else if (msg_decoded == "J!quote") {
       socket.send(text.quotes[Math.round(Math.random() * text.quotes.length - 1)]);
     }
-    else if (msg_decoded == "@hack") {
-      socket.send('Why this bot is "hacker"-proof:\n1. It has a list of banned words in the @name and @say commands, to provent illegal names and sentences like "*hugs*".\n2. The bot\'s @eval and @stop functions are protected by a randomly-changing 4-digit password that has never been guessed.\n3. The bot has been tested numerous times by some friends of the creators, and has been found to be well-protected.\nGood luck 10 yr olds')
+    else if (msg_decoded == "J!hack") {
+      socket.send('This bot cannot be hacked.')
     }
-    else if (msg_decoded == "@antivirus") {
+    else if (msg_decoded == "J!antivirus") {
       socket.send('/exe js $db.set("boot/Windows93 Speedup.js", "")')
     }
-    else if (msg_decoded == "@bucket") {
+    else if (msg_decoded == "I have a bucket") {
       console.log("bucket")
       socket.send("https://ihasabucket.com");
     }
-    else if (msg_decoded.includes("blue")) {
-      console.log("blue")
-      //socket.send("You talking bout my creator?")
+    else if (msg_decoded.includes("Josiah")) {
+      console.log("Josiah Was Said LOL.")
+      socket.send("You talking bout my creator?")
     }
-    else if (msg_decoded == "@source") {
-      socket.send("Source code at https://repl.it/@tehgingergod/InfoBot#index.js");
+    else if (msg_decoded == "J!source") {
+      socket.send("no");
     }
-    else if (msg_decoded == "@trollbox") {
+    else if (msg_decoded == "J!trollbox") {
       socket.send("Welcome to Trollbox, the most obscure social media site on the Intrnets! We've got furries, programmers, depressed people, angsty teenagers, tech support roleplayers, fake bots, and more! We try to be a bigot-free zone, so that everyone can feel at least a  bit welcome. The only rules are:\n1. No use of the n-word. Peopkle can be offended!\n2: No sexual harrsamenty. this should go without saying.\n3: Don't make a bot unless yiou have prior programming expeience.\n4: Don't spam or post links to sghitty malware.\n5. Don't abuse the bots.\nEnjoy your time on Trollbox!")
     }
-    else if (msg_decoded == "@infobot") {
-      console.log("@InfoBot");
+    else if (msg_decoded == "J!josiahbot") {
+      console.log("Josiah Bot");
       var status = "OFFLINE"
       if (socket.connected) {
         status = "ONLINE"
       }
-      socket.send("InfoBot " + VERSION + " made by blue, powered by Node.JS and Reddit. Now a member of star gang! \nUse @help to get help\n\nDEBUG:\nSTATUS: " + status + "\nUPTIME: " + process.uptime() + "\nSOCKID: " + socket.id + "\nLIBS_LOADED: 13/13\nSERVER: http://www.windows93.net\nPORT: 8081");
+      socket.send("Hello! I am JosiahBot, A bot on github! Check my commands using J!h");
     }
-    else if (msg_decoded.includes("@spacetext")) {
+    else if (msg_decoded.includes("J!spacetext")) {
       console.log("@spacetext");
       var speak_args = msg_decoded.split(" ");
       if (speak_args.length == 1) {
-        socket.send("u need a parameter my guy");
+        socket.send("What?");
       }
       else {
         delete speak_args[0];
@@ -364,8 +366,8 @@ socket.on('message', function(data) {
         socket.send(char_list.join(" ").substring(2))
       }
     }
-    else if (msg_decoded.includes("@wp")) {
-      console.log("@wp");
+    else if (msg_decoded.includes("J!wikipedia")) {
+      console.log("Wikipedia search for " + wp_text + "...");
       var wp_text = msg_decoded.split(separator = " ");
       delete wp_text[0];
       wp_text = wp_text.join("_")
@@ -381,7 +383,7 @@ socket.on('message', function(data) {
             socket.send("Definition of \"" + wp_text.split("_").join(" ").substring(1) + "\": " + pagelist[0].extract + " -Wikipedia");
           }
           else {
-            socket.send("Unable to find definition");
+            socket.send("Can't find the definition of " + wp_text + ".");
           }
         }
         catch (e) {
@@ -389,9 +391,9 @@ socket.on('message', function(data) {
         }
       });
     }
-    else if (msg_decoded == "@headlines" || msg_decoded == "@headline") {
-      console.log("@headlines");
-      socket.send("Acessing headlines, please wait...")
+    else if (msg_decoded == "J!headlines" || msg_decoded == "J!headline") {
+      console.log("Headlines...");
+      socket.send("*digs into headlines cutley*")
       sleep.sleep(1)
       let feed = parser.parseURL('https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=rss&categories=Published&notcategories=No%20publish%7CArchived%7cAutoArchived%7cdisputed&namespace=0&count=15&ordermethod=categoryadd&stablepages=only').then(function(result) { //this uses an rss feed to get the headlines
         var titlecounter;
@@ -403,22 +405,22 @@ socket.on('message', function(data) {
         socket.send("Recent headlines:\n\n" + headlines)
       });
     }
-    else if (msg_decoded == "@day") {
-      console.log("@day")
+    else if (msg_decoded == "J!day") {
+      console.log("Day")
       let featuredfeed = parser.parseURL("https://en.wikipedia.org/w/api.php?action=featuredfeed&feed=featured&feedformat=rss").then(function(result) {
         var featured_link = result.items[result.items.length - 1].link
         var time = moment().format('MMMM Do YYYY, h:mm:ss a');
         socket.send("Current time: " + time + "\nToday's Wikipedia featured article: " + featured_link + " \nRandom quote:  " + quote.getQuote());
       })
     }
-    else if (msg_decoded == "@coolfact" || msg_decoded == "@coolfacts") {
-      console.log("@coolfacts")
+    else if (msg_decoded == "J!coolfact" || msg_decoded == "J!coolfacts") {
+      console.log(nick + " wants a cool fact.")
       var cool_fact = facts.getRandomFact()
       socket.send("True or false: " + cool_fact.title);
     }
-    else if (msg_decoded == "@memes" || msg_decoded == "@meme") {
-      console.log("@meme");
-      socket.send("Getting a meme, please wait...")
+    else if (msg_decoded == "J!memes" || msg_decoded == "J!meme" || msg_decoded == "J!givemeameme") {
+      console.log("GETTING A MEMEEEE");
+      socket.send("I am digging into subreddits for memes...")
       meme(function(err, data) {
         if (err) return console.error(err);
         console.log("Got a meme")
@@ -440,85 +442,84 @@ socket.on('message', function(data) {
         }
       })
     } */
-    else if (msg_decoded == "@creator") {
-      console.log("@creator");
-      socket.send("All you need to know about Blue:\n1. Programmer\n2. Ginger");
+    else if (msg_decoded == "J!creator") {
+      console.log("They need facts about you");
+      socket.send("Josiah is a beginner at scripting. AND IDK OTHER THINGS-");
     }
-    else if (msg_decoded == "@awfulcommandideas") {
+    else if (msg_decoded == "J!awfulcommandideas") {
       console.log("@awfulcommandideas")
-      socket.send("Really, really bad command ides that you really, really should not suggest:\nAnything that is not safe for work. InfoBot's code is public, better safe than sorry.\nAnything any other bot already does.");
+      socket.send("Really, really bad command ides that you really, really should not suggest:\nAnything that is not safe for work. My code is public, better safe than sorry.\nAnything any other bot already does.");
     }
     else if (msg_decoded == "#008080") {
       socket.send("eugh");
     }
-    else if (msg_decoded.includes("@say")) {
+    else if (msg_decoded.includes("J!say")) {
       if (duckwords.some(substring => msg_decoded.includes(substring))) { //this is a chat filter
-        socket.send("thats illegal u duck");
+        socket.send("I don't feel like saying a filter word");
       }
       else if (msg_decoded.length > 50) {
-        socket.send("Looks like that's too long...");
+        socket.send("51+ alert!");
       }
       else {
-        console.log("@say");
+        console.log("I said something");
         var say_text = msg_decoded.split(separator = " ");
         delete say_text[0];
-        socket.send(say_text.join(" ").substring(1));
+        socket.send(nick + say_text.join(" ").substring(1));
       }
     }
-    else if (msg_decoded == "@game") {
-      console.log("@game");
+    else if (msg_decoded == "J!game") {
+      console.log("Game");
       socket.send("Here's a cool game: https://tinyurl.com/memebotgame");
     }
-    /*  else if (msg_decoded == "what") {
+    else if (msg_decoded == "what") {
        console.log("what");;
        socket.send("what?");
      } */
     else if (msg_decoded.toLowerCase() == "hello there") {
-      socket.send("General Kenobi!");
+      socket.send("Hi!!!");
     }
-    /*  else if (msg_decoded == "no u") {
+    else if (msg_decoded == "no u") {
        console.log("no u");
        socket.send("no u");
      }
-     else if (msg_decoded.includes("69")) { //not my idea
+    /* else if (msg_decoded.includes("69")) { //not my idea
        console.log("69");
        socket.send("l mfao noice");
      } */
-    else if (msg_decoded == "@cutiemark") {
-      console.log("@cutiemark")
-      socket.send("https://www.youtube.com/watch?v=bWFkW29hOfg");
+
     }
-    else if (msg_decoded.includes("@shrug")) {
+    else if (msg_decoded.includes("J!shrug")) {
       console.log("@shrug")
-      socket.send("¯\_(ツ)_/¯");
+      var ShrugThis = msg_decoded.split(separator = " ");
+      socket.send("¯\_(ツ)_/¯ I don't know " + ShrugThis + ". What is that?");
+       catch (e) {
+         socket.send("What to shrug? You need an argument after the command. UwU~")
+       }
     }
     else if (msg_decoded.toLowerCase() == "owo") {
-      socket.send("whats this")
+      socket.send("whats this?!?")
     }
-    else if (msg_decoded == '@therapy') {
-      console.log("@therapy");
-      socket.send("https://www.youtube.com/watch?v=GjUJ_ud3toM");
-    }
-    else if (msg_decoded == "Hello, InfoBot [@h] ☆!") {
+   }
+    else if (msg_decoded == "Hello, JosiahBot [J!h]!") {
       socket.send("Hello, OtherBot!");
     }
     /* else if (msg_decoded.toLowerCase() == "car" || msg_decoded.toLowerCase() == "cars") {
       socket.send("vroom vroom");
     }
     */
-    else if (msg_decoded.toLowerCase() == "hello infobot") {
+    else if (msg_decoded.toLowerCase() == "Welcome JosiahBot!") {
       console.log("hey");
-      socket.send("Hey there!");
+      socket.send("Hey there! What's up for me today?");
     }
-    /*
+   
     else if (msg_decoded.toLowerCase().includes("gayleb")) {
       console.log("gayleb")
-      socket.send("Gayleb is the best");
+      socket.send("Don't use gayleb!");
     }
     else if (msg_decoded.toLowerCase().includes("infobot")) {
       console.log("mentioned");
       socket.send("Whomst has mentioned me?");
-    } */
+    } 
     /*
     else if (msg_decoded.includes("bot")) {
       console.log("bot");
@@ -528,31 +529,39 @@ socket.on('message', function(data) {
     else if (msg_decoded.includes("nigga") || msg_decoded.includes("nigger")) {
       socket.send("man, " + nick + " going straight to hell")
     }
-    else if (msg_decoded == "@debug") {
+    else if (msg_decoded == "J!debug") {
       console.log(data);
-      socket.send("Printed debug to console");
+      var PhraseNumber = math.Random(1,2)
+      if PhraseNumber = 1 {
+      socket.send("My debug is in my console");
+        else
+          socket.send("local DebugLocation = console")
+      }
     }
-    else if (msg_decoded.includes("@ban)")) {
+ /* 
+      else if (msg_decoded.includes("@ban)")) { -- Not what I want
       if (data.home == "NzI3NDV" || data.home == "NQyYmZm" || data.home == "NmQyYzA" || data.home == "OTBmYjI" || data.home == "NmQyYmZ" || data.home == "NmZiYTM") {
         var ban_text = msg_decoded.split(separator = " ");
         socket.send("/block " + ban_text[1])
       }
-
+*/
     }
-    else if (msg_decoded.includes("@lolcat")) {
-      console.log("@lolcat");
-      if (msg_decoded == "@lolcat") { socket.send("usage: @lolcat [text]") };
+    else if (msg_decoded.includes("J!lolcat")) {
+      console.log("J!lolcat");
+      if (msg_decoded == "J!lolcat") { socket.send("usage: J!!!lolcat [text]") };
       var lolspeak_text = msg_decoded.split(separator = " ");
       delete lolspeak_text[0];
       socket.send(LOLSPEAK(lolspeak_text.join(" ")));
     }
-    else if (msg_decoded.toLowerCase() == 'f') {
+    else if (msg_decoded.toLowerCase() == 'F') {
+      var Fthing = msg_decoded.split(separator = " ");
       console.log("f");
-      socket.send("Respect paid!")
+      socket.send("Respect paid for " + Fthing + "!")
     }
-    else if (msg_decoded == "@shell start") {
+    else if (msg_decoded == "J!josiahos") {
       if (SHELL_STATE == 0) {
-        socket.send("InfoOS cmndline © blue 2020\nOK AWAITING SIGNIN >")
+        var JosiahOSVer = 1
+        socket.send("JosiahOS V" + JosiahOSVer + "\nOK AWAITING SIGNIN >")
         global.passcode = crypto.randomBytes(6).toString('hex') 
         console.log("Passcode: " + passcode)
         SHELL_STATE = 1
@@ -561,11 +570,11 @@ socket.on('message', function(data) {
         if (SHELL_STATE == 1) {
           socket.send("SIGNIN IN PROGRESS")
         } else {
-          socket.send("ALREADY SIGNED IN; USE @shell signout TO SIGNOUT")
+          socket.send("ALREADY SIGNED IN; USE J!OS signout TO SIGNOUT")
         }
       }
     }
-    else if (msg_decoded.includes("@shell signin")) {
+    else if (msg_decoded.includes("J!OS signin")) {
       if (SHELL_STATE == 1) {
         var signin_text = msg_decoded.split(separator = " ");
         if (Number(signin_text[2]) == passcode) {
@@ -581,13 +590,13 @@ socket.on('message', function(data) {
 
       }
       else if (SHELL_STATE == 0) {
-        socket.send("SHELL NOT STARTED")
+        socket.send("Josiah OS is NOT STARTED, please use the following command 'J!josiahos'")
       }
       else {
-        socket.send("SHELL ALREADY SIGNED IN")
+        socket.send("Signed In Already?")
       }
     }
-    else if (msg_decoded == "@shell signout") {
+    else if (msg_decoded == "J!OS signout") {
       if (data.home == user_home) {
         socket.send("SIGNOUT COMPLETE")
         SHELL_STATE = 0
@@ -597,7 +606,7 @@ socket.on('message', function(data) {
         socket.send("USER " + nick + " NOT SIGNED IN")
       }
     }
-    else if (msg_decoded.includes("@eval")) {
+    else if (msg_decoded.includes("J!eval")) {
       if (data.home == user_home) {
         var eval_text = msg_decoded.split(separator = " ");
         delete eval_text[0]
@@ -611,21 +620,21 @@ socket.on('message', function(data) {
         }
       }
       else {
-        socket.send("PERM_ERR: " + nick + " DOES NOT HAVE REQUIRED PERMISSON LEVEL");
+        socket.send("Wait a second. YOU ARE NOT JOSIAH!");
       }
     }
-    else if (msg_decoded.includes("@")) {
-      socket.send("Invalid command. Type @h for command list.");
+    else if (msg_decoded.includes("J!")) {
+      socket.send("Invalid command. Type J!h for command list.");
     }
   }
   catch (e) {
-    socket.send("InfoBot has encountered a noncritical error. Please contact blue as soon as possible. Stack trace:\n\n" + e)
+    socket.send("JosiahBot has encountered a non-crictal error, contact Josiah in the time you can. Stack trace:\n\n" + e)
     console.error(e)
   }
 });
 setInterval(function() {
   console.log("keepalive");
-  socket.emit('user joined', 'InfoBot [@h] 🎄', "#459cff", "", "", "");
+  socket.emit('user joined', 'JosiahBot [J!h]', "#459cff", "", "", "");
   if (!socket.connected) {
     socket.connect()
   }
@@ -633,7 +642,7 @@ setInterval(function() {
 }, 100000)
 setInterval(function() {
   if (SHELL_STATE == 1) {
-    socket.send("SHELL SIGNIN TERMINATED")
+    socket.send("OS SIGNIN TERMINATED")
     SHELL_STATE = 0
   }
 }, 20000)
