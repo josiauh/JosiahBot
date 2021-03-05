@@ -25,7 +25,8 @@ var sleep = require('sleep');
 console.log("Loaded sleep")
 var he = require("he")
 console.log("Loaded he")
-var duckwords = ["nigger", "nigg3r", "nigg3rs", "n¡gger", "n1ggers", "n1gger", "n¡ggers", "niggers", "nigga", "/", "*", "fuck", "discord", "exe"]
+var duckwords = ["nigger", "nigg3r", "nigg3rs", "n¡gger", "n1ggers", "n1gger", "n¡ggers", "niggers", "nigga", "/", "*", "fuck", "discord", "exe", "Josiah is bad"]
+var BannedUsers = ["NewsBot [NW^]"]
 users = []
 const quote = require('find-quote');
 let parser = new Parser();
@@ -59,7 +60,7 @@ console.log("Started socket.io client, waiting for connection...")
 socket.on('_connected', function(data) { 
   socket.emit('user joined', 'JosiahBot [J!]', "#459cff", "", "", "");
   console.log("connected");
-  socket.send("InfoBot " + VERSION + " 🄯 copyleft blue 2020\nOK")
+  socket.send("JosiahBot " + VERSION + " 🄯 copyleft Josiah 2020\nOK")
 })
 //for welcome messages
 socket.on('update users', function(data) {
@@ -69,12 +70,15 @@ socket.on('update users', function(data) {
   }
 })
 socket.on('user joined', function(data) {
-  if (data.color == "cyan; Josiah") {
+  if (nick == "Josiah") {
     socket.send("Josiah (my creator) Is Here!");
   }
   if (data.home == "MTg1NTM") {
     socket.send("Jaken?")
   }
+  if (nick == BannedUsers.some( substring => data.nick.toLowerCase().includes(substring))) {
+    socket.send("BANNED USER!")
+  } 
 });
 socket.on('message', function(data) {
   try {
@@ -106,7 +110,7 @@ socket.on('message', function(data) {
     else if (msg_decoded.includes("@JosiahBot")) {
       socket.send("Wassup?");
     }
-    /*else if (msg_decoded.includes("@isbot")) {
+    else if (msg_decoded.includes("J!isbot")) {
       console.log("@isbot")
       var isbot_text = msg_decoded.split(separator = " ");
       delete isbot_text[0]
@@ -116,15 +120,15 @@ socket.on('message', function(data) {
         var isbot_userData = getUserData(isbot_name)
         if (isbot_userData) {
           if (isbot_userData.isBot) {
-            socket.send("User " + he.decode(isbot_name) + " is a bot.")
+            socket.send("User " + he.decode(isbot_name) + " is a bot!")
           }
           else {
-             socket.send("User " + he.decode(isbot_name) + " is not a bot.")
+             socket.send("User " + he.decode(isbot_name) + " is not a bot...")
           }
         }
         else {
           if (isbot_name.length == 0) {
-            socket.send("insert a parameter duck")
+            socket.send("Insert a user lol.")
           }
           else {
             socket.send("Could not find user: " + isbot_name)
@@ -132,7 +136,7 @@ socket.on('message', function(data) {
         }
       }
     }
-    */
+   
     else if (msg_decoded.includes("J!currentuserroom")) {
       console.log("@whereis")
       var whereis_text = msg_decoded.split(separator = " ");
@@ -149,7 +153,7 @@ socket.on('message', function(data) {
             socket.send("Insert the user, lol.")
           }
           else {
-            socket.send("I can't locate a user in trollbox named " + whereis_name + ".")
+            socket.send("I can't locate a user in trollbox named " + whereis_name + "... Is it just me?")
           }
         }
       }
@@ -160,7 +164,7 @@ socket.on('message', function(data) {
     else if (msg_decoded == "J!license") {
       socket.send("I DON'T KNOW :D")
     }
-    else if (msg_decoded.toLowerCase() == "im blue" || msg_decoded.toLowerCase() == "J!gettinfreaky") {
+    else if (msg_decoded.toLowerCase() == "Yeah getting freaky" || msg_decoded.toLowerCase() == "J!gettinfreaky") {
       socket.send("on a friday night, yeah");
     }
     else if (msg_decoded == "J!crashmywindows") {
@@ -172,7 +176,7 @@ socket.on('message', function(data) {
     }
     else if (msg_decoded == "J!rps") {
       rps_home = data.home
-      socket.send("Make your move! (say 'rock', 'paper', or 'scissors')")
+      socket.send("Make your move! (say 'rock', 'paper', or 'scissors'!)")
     }
     else if (msg_decoded == "You Cunt") {
       socket.send(":(");
@@ -260,7 +264,7 @@ socket.on('message', function(data) {
     else if (msg_decoded == "J!shutdown") {
       console.log("@stop")
       if (nick = "Josiah") {
-        socket.send("I TRUST YOU JOSIAH, GOODBYE TROLLBOX");
+        socket.send("I'm out. p e a c e");
         process.exit(0);
       }
       else {
