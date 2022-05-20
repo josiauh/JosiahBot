@@ -8,7 +8,7 @@ J!day: A bit of info about the day.
 
 TB commands: 
 J!trollbox: The Trollbox Survival Guide
-J!currentuserroom [username]: Finds what room a user is in.
+J!whereis [username]: Finds what room a user is in.
 J!give cookie: I give you cookie
 J!antivirus: Delete the REDDITOR virus
 J!crashmywindows: crash ur windows93
@@ -35,14 +35,11 @@ J!source: no
 J!creator: About Josiah
 J!hack: NO!
 
-JosiahOS commands: 
+Uh commands: 
 J!josiahos start: Start the InfoOS Commandline
 J!OS signin [passcode]: Signin to the shell
 J!OS signout: Signout from the shell
 
-Owner commands (enabled by @shell signin):
-J!shutdown: Goodbye Trollbox...
-J!changeroom [room]: Change the room
-J!eval [js]: Evaluates 1 line of Javascript (To the 10 year olds trying to "hack" it, good luck XD)
+Owner commands no work
 
 Bot made by Josiah!
