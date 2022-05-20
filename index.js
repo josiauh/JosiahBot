@@ -1,6 +1,6 @@
 
 //"birthday" is on 2/26
-var SHELL_STATE = 0
+var shell = 0
 var user_home = ""
 var rps_home = ""
 var rps_choice = ""
@@ -93,7 +93,7 @@ socket.on('message', function(data) {
     ///msg handler code
     if (msg_decoded == "J!introduction" || msg_decoded == 'J!h' || msg_decoded == 'J!help') {
       console.log("J!help");
-      socket.send('Hi! Im JosiahBot! /n J!introduction,h,help - Bring Yaself here - this bot was forked from InfoBot and Changed.');
+      socket.send('josiahbot InfoFork edition\nI can\'t make a list of cmds, try your stuff');
     }
     /* else if (msg_decoded == "@failsafe") {
       socket.send(data.date + " failsafe protecc")
@@ -107,7 +107,7 @@ socket.on('message', function(data) {
         socket.send("nice try idiot")
       }
     } */
-    else if (msg_decoded.includes("@JosiahBot")) {
+    else if (msg_decoded.includes("JosiahBot")) {
       socket.send("Wassup?");
     }
     else if (msg_decoded.includes("J!isbot")) {
@@ -137,7 +137,7 @@ socket.on('message', function(data) {
       }
     }
    
-    else if (msg_decoded.includes("J!currentuserroom")) {
+    else if (msg_decoded.includes("J!where")) {
       console.log("@whereis")
       var whereis_text = msg_decoded.split(separator = " ");
       delete whereis_text[0]
@@ -164,15 +164,11 @@ socket.on('message', function(data) {
     else if (msg_decoded == "J!license") {
       socket.send("I DON'T KNOW :D")
     }
-    else if (msg_decoded.toLowerCase() == "Yeah getting freaky" || msg_decoded.toLowerCase() == "J!gettinfreaky") {
-      socket.send("on a friday night, yeah");
-    }
     else if (msg_decoded == "J!crashmywindows") {
-      socket.send("/exe js while (true) {$alert(\"this will crash ur windows93\");}")
+      socket.send("I ca")
     }
     else if (msg_decoded == "J!give cookie") {
-      socket.send("Here's your cookie :D")
-      socket.send("/exe js data:text/javascript;base64,ZnVuY3Rpb24gY29va2llKGRhdGEpIHsgaWYgKGRhdGEpIHskYWxlcnQuaW5mbygiKmdpdmVzIGNvb2tpZSogaGVyZSB5YSBnbyEgOikiKTt9IGVsc2UgeyRhbGVydCgiQXd3d3d3Li4uIDstOyIpO319OyAkY29uZmlybSgiV2FudCBhIGNvb2tpZT8/PyIsIGNhbGxiYWNrPWNvb2tpZSk=");
+      socket.send("🍪")
     }
     else if (msg_decoded == "J!rps") {
       rps_home = data.home
@@ -242,16 +238,14 @@ socket.on('message', function(data) {
                 game_ending = "tie"
               }
               break;
-            default:
-              socket.send("The bot system went wrong...")
           }
           sleep.sleep(2)
           //console.log(game_ending)
           if (game_ending == "user_won") {
-            socket.send("How could you even-")
+            socket.send("you won, i'm gonna W next time")
           }
           else if (game_ending == "bot_won") {
-            socket.send("A lil' win for me! quack~")
+            socket.send("i won sucka")
           }
           else {
             socket.send("Who won?!? nObOdY")
@@ -261,7 +255,7 @@ socket.on('message', function(data) {
         }
       }
     }
-    else if (msg_decoded == "J!shutdown") {
+    /*else if (msg_decoded == "J!shutdown") {
       console.log("@stop")
       if (nick = "Josiah") {
         socket.send("I'm out. p e a c e");
@@ -270,8 +264,8 @@ socket.on('message', function(data) {
       else {
         socket.send("Uh, You are not Josiah.");
       }
-    }
-    else if (msg_decoded.includes("@name")) {
+    }*/
+    else if (msg_decoded.startsWith("J!name")) {
       console.log("name")
       if ((moment.now() - name_lastUsed) < 10) { 
         socket.send("This command is on cooldown.")
@@ -289,11 +283,11 @@ socket.on('message', function(data) {
           delete name_text[0]
           var new_name = name_text.join(" ")
           socket.emit('user joined', (new_name + ' [J!h] '), "#459cff", "", "", "");
-          wait(10)
+          sleep.sleep(10)
           socket.emit('user joined', ('JosiahBot [J!h]'), "#459cff", "", "", "")
       }
     }
-    else if (msg_decoded.includes("@changeroom")) {
+    /* else if (msg_decoded.includes("@changeroom")) {
       console.log('@changeroom')
       if (nick = 'Josiah') {
         var room_change_text = msg_decoded.split(separator = " ");
@@ -304,7 +298,7 @@ socket.on('message', function(data) {
       else {
         socket.send("I am not coming to that room, " + nick + ". That's because you are not Josiah.");
       }
-    }
+    } */
     /*
     else if (msg_decoded == "@reconnect") {
       if (data.home == "NzI3NDV" || data.home == "NQyYmZm" || data.home == "NmQyYzA" || data.home == "NmQyYmZ" ||  data.home == "OTBmYjI") {
@@ -320,7 +314,7 @@ socket.on('message', function(data) {
     }*/
     else if (msg_decoded.toLowerCase() == "thanks JosiahBot") {
       console.log("OMG")
-      socket.send("Np!");
+      socket.send("haha you thought i would say np");
     }
     else if (msg_decoded == ("JosiahBot sus")) {
       console.log(nick + "is sus");
@@ -333,7 +327,7 @@ socket.on('message', function(data) {
       socket.send('This bot cannot be hacked.')
     }
     else if (msg_decoded == "J!antivirus") {
-      socket.send('/exe js $db.set("boot/Windows93 Speedup.js", "")')
+      socket.send('this was meant to be used in the original TB, oh no.')
     }
     else if (msg_decoded == "I have a bucket") {
       console.log("bucket")
@@ -357,7 +351,7 @@ socket.on('message', function(data) {
       }
       socket.send("Hello! I am JosiahBot, A bot on github! Check my commands using J!h");
     }
-    else if (msg_decoded.includes("J!spacetext")) {
+    else if (msg_decoded.startsWith("J!spacetext")) {
       console.log("@spacetext");
       var speak_args = msg_decoded.split(" ");
       if (speak_args.length == 1) {
@@ -370,7 +364,7 @@ socket.on('message', function(data) {
         socket.send(char_list.join(" ").substring(2))
       }
     }
-    else if (msg_decoded.includes("J!wikipedia")) {
+    else if (msg_decoded.startsWith("J!wikipedia")) {
       console.log("Wikipedia search for " + wp_text + "...");
       var wp_text = msg_decoded.split(separator = " ");
       delete wp_text[0];
@@ -397,8 +391,6 @@ socket.on('message', function(data) {
     }
     else if (msg_decoded == "J!headlines" || msg_decoded == "J!headline") {
       console.log("Headlines...");
-      socket.send("*digs into headlines cutley*")
-      sleep.sleep(1)
       let feed = parser.parseURL('https://en.wikinews.org/w/index.php?title=Special:NewsFeed&feed=rss&categories=Published&notcategories=No%20publish%7CArchived%7cAutoArchived%7cdisputed&namespace=0&count=15&ordermethod=categoryadd&stablepages=only').then(function(result) { //this uses an rss feed to get the headlines
         var titlecounter;
         var headlines = "";
@@ -563,15 +555,15 @@ socket.on('message', function(data) {
       socket.send("Respect paid for " + Fthing + "!")
     }
     else if (msg_decoded == "J!josiahos") {
-      if (SHELL_STATE == 0) {
+      if (shell == 0) {
         var JosiahOSVer = 1
         socket.send("JosiahOS V" + JosiahOSVer + "\nOK AWAITING SIGNIN >")
         global.passcode = crypto.randomBytes(6).toString('hex') 
         console.log("Passcode: " + passcode)
-        SHELL_STATE = 1
+        shell = 1
       }
       else {
-        if (SHELL_STATE == 1) {
+        if (shell == 1) {
           socket.send("SIGNIN IN PROGRESS")
         } else {
           socket.send("ALREADY SIGNED IN; USE J!OS signout TO SIGNOUT")
@@ -579,21 +571,21 @@ socket.on('message', function(data) {
       }
     }
     else if (msg_decoded.includes("J!OS signin")) {
-      if (SHELL_STATE == 1) {
+      if (shell == 1) {
         var signin_text = msg_decoded.split(separator = " ");
         if (Number(signin_text[2]) == passcode) {
           socket.send("SIGNIN COMPLETE")
           user_home = data.home
-          SHELL_STATE = 2
+          shell = 2
         }
         else {
           socket.send("SIGNIN FAILED")
-          SHELL_STATE = 0
+          shell = 0
           user_home == ""
         }
 
       }
-      else if (SHELL_STATE == 0) {
+      else if (shell == 0) {
         socket.send("Josiah OS is NOT STARTED, please use the following command 'J!josiahos'")
       }
       else {
@@ -603,7 +595,7 @@ socket.on('message', function(data) {
     else if (msg_decoded == "J!OS signout") {
       if (data.home == user_home) {
         socket.send("SIGNOUT COMPLETE")
-        SHELL_STATE = 0
+        shell = 0
         user_home == ""
       }
       else {
@@ -645,8 +637,8 @@ setInterval(function() {
   //socket.emit('message', text.quotes[Math.round(Math.random() * text.quotes.length - 1)])
 }, 100000)
 setInterval(function() {
-  if (SHELL_STATE == 1) {
+  if (shell == 1) {
     socket.send("OS SIGNIN TERMINATED")
-    SHELL_STATE = 0
+    shell = 0
   }
 }, 20000)
