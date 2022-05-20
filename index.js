@@ -38,6 +38,8 @@ var tbheaders = require('trollbox-headers').headers();
 console.log("Loaded tbheaders")
 const { meme } = require("memejs");
 console.log("Loaded memejs")
+const fs = require("fs")
+console.log("loaded fs")
 
 console.log("Finished loading libraries")
 
@@ -93,7 +95,11 @@ socket.on('message', function(data) {
     ///msg handler code
     if (msg_decoded == "J!introduction" || msg_decoded == 'J!h' || msg_decoded == 'J!help') {
       console.log("J!help");
-      socket.send('josiahbot InfoFork edition\nI can\'t make a list of cmds, try your stuff');
+      fs.readFile('help.txt', 'utf8', function(err, data){
+      
+      // Display the file content
+      socket.send(data);
+});
     }
     /* else if (msg_decoded == "@failsafe") {
       socket.send(data.date + " failsafe protecc")
